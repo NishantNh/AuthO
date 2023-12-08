@@ -7,13 +7,22 @@
       name="google-signin-client_id"
       content="541586284692-7llidllomvsev62afdq2ub7tll4547kh.apps.googleusercontent.com"
     />
+    <title>Google Sign-In and Sign-Out</title>
+    <!-- Your CSS link goes here -->
     <link rel="stylesheet" href="index.css" />
-    <title>Document</title>
   </head>
   <body>
+    <!-- Google Sign-In button -->
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+    <!-- Sign-Out link -->
     <a href="#" onclick="signOut();">Sign out</a>
+
+    <!-- Your content or additional elements go here -->
+
+    <!-- JavaScript code -->
     <script>
+      // Function to execute when user signs in
       function onSignIn(googleUser) {
         var profile = googleUser.getBasicProfile();
         console.log("ID: " + profile.getId());
@@ -23,14 +32,25 @@
         // You can add further actions here, like sending user data to a server
       }
 
+      // Function to execute when user clicks sign out
       function signOut() {
         var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-          console.log("User signed out.");
-        });
+        auth2
+          .signOut()
+          .then(function () {
+            console.log("User signed out.");
+            // Perform additional actions after sign-out if needed
+          })
+          .catch(function (error) {
+            console.error("Error signing out:", error);
+          });
       }
     </script>
+
+    <!-- Google API Platform script -->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <!-- Your additional JavaScript file, if any -->
     <script src="./index.js"></script>
   </body>
 </html>
